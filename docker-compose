@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - "8080:80"
+    depends_on:
+      - redis
+    networks:
+      - webnet
+
+  redis:
+    image: redis:alpine
+    networks:
+      - webnet
+
+networks:
+  webnet:
